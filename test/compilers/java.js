@@ -71,5 +71,26 @@ exports['compile storage bytecodes'] = function (test) {
 	test.equal(result[1], 'sstore();');
 }
 
+exports['compile arithmetic operations bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('0102030405060708090a0b');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 11);
+	test.equal(result[0], 'add();');
+	test.equal(result[1], 'sub();');
+	test.equal(result[2], 'mul();');
+	test.equal(result[3], 'div();');
+	test.equal(result[4], 'sdiv();');
+	test.equal(result[5], 'mod();');
+	test.equal(result[6], 'smod();');
+	test.equal(result[7], 'addmod();');
+	test.equal(result[8], 'mulmod();');
+	test.equal(result[9], 'exp();');
+	test.equal(result[10], 'signextend();');
+}
+
 
 
