@@ -46,3 +46,16 @@ exports['compile swap bytecodes'] = function (test) {
 	}
 }
 
+exports['compile memory bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('515253');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 3);
+	test.equal(result[0], 'mload();');
+	test.equal(result[1], 'mstore();');
+	test.equal(result[2], 'mstore8();');
+}
+
