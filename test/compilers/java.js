@@ -59,3 +59,17 @@ exports['compile memory bytecodes'] = function (test) {
 	test.equal(result[2], 'mstore8();');
 }
 
+exports['compile storage bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('5455');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 2);
+	test.equal(result[0], 'sload();');
+	test.equal(result[1], 'sstore();');
+}
+
+
+
