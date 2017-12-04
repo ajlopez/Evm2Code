@@ -17,7 +17,7 @@ exports['compile dup1 bytecode'] = function (test) {
 	test.ok(result);
 	test.ok(Array.isArray(result));
 	test.equal(result.length, 1);
-	test.equal(result[0], 'Dup(1);');
+	test.equal(result[0], 'Dup(1)');
 }
 
 exports['compile dup bytecodes'] = function (test) {
@@ -29,7 +29,7 @@ exports['compile dup bytecodes'] = function (test) {
 		test.ok(result);
 		test.ok(Array.isArray(result));
 		test.equal(result.length, 1);
-		test.equal(result[0], 'Dup(' + (k + 1) + ');');
+		test.equal(result[0], 'Dup(' + (k + 1) + ')');
 	}
 }
 
@@ -42,7 +42,7 @@ exports['compile swap bytecodes'] = function (test) {
 		test.ok(result);
 		test.ok(Array.isArray(result));
 		test.equal(result.length, 1);
-		test.equal(result[0], 'Swap(' + (k + 1) + ');');
+		test.equal(result[0], 'Swap(' + (k + 1) + ')');
 	}
 }
 
@@ -54,9 +54,9 @@ exports['compile memory bytecodes'] = function (test) {
 	test.ok(result);
 	test.ok(Array.isArray(result));
 	test.equal(result.length, 3);
-	test.equal(result[0], 'MLoad();');
-	test.equal(result[1], 'MStore();');
-	test.equal(result[2], 'MStore8();');
+	test.equal(result[0], 'MLoad()');
+	test.equal(result[1], 'MStore()');
+	test.equal(result[2], 'MStore8()');
 }
 
 exports['compile storage bytecodes'] = function (test) {
@@ -67,8 +67,8 @@ exports['compile storage bytecodes'] = function (test) {
 	test.ok(result);
 	test.ok(Array.isArray(result));
 	test.equal(result.length, 2);
-	test.equal(result[0], 'SLoad();');
-	test.equal(result[1], 'SStore();');
+	test.equal(result[0], 'SLoad()');
+	test.equal(result[1], 'SStore()');
 }
 
 exports['compile arithmetic operations bytecodes'] = function (test) {
@@ -79,17 +79,17 @@ exports['compile arithmetic operations bytecodes'] = function (test) {
 	test.ok(result);
 	test.ok(Array.isArray(result));
 	test.equal(result.length, 11);
-	test.equal(result[0], 'Add();');
-	test.equal(result[1], 'Sub();');
-	test.equal(result[2], 'Mul();');
-	test.equal(result[3], 'Div();');
-	test.equal(result[4], 'Sdiv();');
-	test.equal(result[5], 'Mod();');
-	test.equal(result[6], 'SMod();');
-	test.equal(result[7], 'AddMod();');
-	test.equal(result[8], 'MulMod();');
-	test.equal(result[9], 'Exp();');
-	test.equal(result[10], 'SignExtend();');
+	test.equal(result[0], 'Add()');
+	test.equal(result[1], 'Sub()');
+	test.equal(result[2], 'Mul()');
+	test.equal(result[3], 'Div()');
+	test.equal(result[4], 'Sdiv()');
+	test.equal(result[5], 'Mod()');
+	test.equal(result[6], 'SMod()');
+	test.equal(result[7], 'AddMod()');
+	test.equal(result[8], 'MulMod()');
+	test.equal(result[9], 'Exp()');
+	test.equal(result[10], 'SignExtend()');
 }
 
 
