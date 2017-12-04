@@ -9,6 +9,18 @@ exports['create compiler as object'] = function (test) {
 	test.equal(typeof compiler, 'object');
 }
 
+exports['compile stop bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+	
+	var result = compiler.compile('00');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 2);
+	test.equal(result[0], 'Stop()');
+	test.equal(result[1], 'return');
+}
+
 exports['compile dup1 bytecode'] = function (test) {
 	var compiler = compilers.compiler();
 	
