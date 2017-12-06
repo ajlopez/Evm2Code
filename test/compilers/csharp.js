@@ -104,5 +104,21 @@ exports['compile arithmetic operations bytecodes'] = function (test) {
 	test.equal(result[10], 'SignExtend()');
 }
 
+exports['compile comparison operations bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('1011121314');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 5);
+	test.equal(result[0], 'Lt()');
+	test.equal(result[1], 'Gt()');
+	test.equal(result[2], 'Slt()');
+	test.equal(result[3], 'Sgt()');
+	test.equal(result[4], 'Eq()');
+}
+
+
 
 
