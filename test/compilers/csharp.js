@@ -119,6 +119,22 @@ exports['compile comparison operations bytecodes'] = function (test) {
 	test.equal(result[4], 'Eq()');
 }
 
+exports['compile log bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('a0a1a2a3a4');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 5);
+	test.equal(result[0], 'Log(0)');
+	test.equal(result[1], 'Log(1)');
+	test.equal(result[2], 'Log(2)');
+	test.equal(result[3], 'Log(3)');
+	test.equal(result[4], 'Log(4)');
+}
+
+
 
 
 
