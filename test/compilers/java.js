@@ -134,4 +134,16 @@ exports['compile log bytecodes'] = function (test) {
 	test.equal(result[4], 'log(4)');
 }
 
+exports['compile gas bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('5a');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'gas()');
+}
+
+
 
