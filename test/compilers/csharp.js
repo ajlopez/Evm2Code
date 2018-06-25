@@ -178,6 +178,17 @@ exports['compile gaslimit bytecode'] = function (test) {
 	test.equal(result[0], 'GasLimit()');
 }
 
+exports['compile callvalue bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('34');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'CallValue()');
+}
+
 
 
 
