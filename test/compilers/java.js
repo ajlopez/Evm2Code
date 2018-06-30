@@ -200,6 +200,17 @@ exports['compile balance bytecode'] = function (test) {
 	test.equal(result[0], 'balance()');
 }
 
+exports['compile origin bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('32');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'origin()');
+}
+
 exports['compile caller bytecode'] = function (test) {
 	var compiler = compilers.compiler();
 
