@@ -254,3 +254,16 @@ exports['compile calldatasize bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'CallDataSize()');
 }
+
+exports['compile calldatacopy bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('37');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'CallDataCopy()');
+}
+
+
