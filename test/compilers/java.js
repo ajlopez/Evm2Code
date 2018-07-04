@@ -277,14 +277,14 @@ exports['compile codesize bytecode'] = function (test) {
 	test.equal(result[0], 'codesize()');
 }
 
-exports['compile codesize bytecode'] = function (test) {
+exports['compile codecopy bytecode'] = function (test) {
 	var compiler = compilers.compiler();
 
-	var result = compiler.compile('38');
+	var result = compiler.compile('39');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
 	test.equal(result.length, 1);
-	test.equal(result[0], 'CodeSize()');
+	test.equal(result[0], 'codecopy()');
 }
 
