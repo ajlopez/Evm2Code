@@ -288,3 +288,14 @@ exports['compile codecopy bytecode'] = function (test) {
 	test.equal(result[0], 'codecopy()');
 }
 
+exports['compile gasprice bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('3a');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'gasprice()');
+}
+
