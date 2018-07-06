@@ -299,3 +299,14 @@ exports['compile gasprice bytecode'] = function (test) {
 	test.equal(result[0], 'gasprice()');
 }
 
+exports['compile extcodesize bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('3b');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'extcodesize()');
+}
+
