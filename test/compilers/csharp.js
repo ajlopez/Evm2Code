@@ -310,3 +310,14 @@ exports['compile extcodesize bytecode'] = function (test) {
 	test.equal(result[0], 'ExtCodeSize()');
 }
 
+exports['compile extcodecopy bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('3c');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'ExtCodeCopy()');
+}
+
