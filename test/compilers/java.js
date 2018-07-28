@@ -321,3 +321,14 @@ exports['compile extcodecopy bytecode'] = function (test) {
 	test.equal(result[0], 'extcodecopy()');
 }
 
+exports['compile returndatasize bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('3d');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'returndatasize()');
+}
+
