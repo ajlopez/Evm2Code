@@ -331,3 +331,14 @@ exports['compile returndatasize bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'ReturnDataSize()');
 }
+
+exports['compile returndatacopy bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('3e');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'ReturnDataCopy()');
+}
