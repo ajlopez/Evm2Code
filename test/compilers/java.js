@@ -343,3 +343,14 @@ exports['compile returndatacopy bytecode'] = function (test) {
 	test.equal(result[0], 'returndatacopy()');
 }
 
+exports['compile blockhash bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('40');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'blockhash()');
+}
+
