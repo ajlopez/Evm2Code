@@ -365,3 +365,13 @@ exports['compile coinbase bytecode'] = function (test) {
 	test.equal(result[0], 'CoinBase()');
 }
 
+exports['compile timestamp bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('42');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'TimeStamp()');
+}
