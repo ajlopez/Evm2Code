@@ -375,3 +375,14 @@ exports['compile timestamp bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'timestamp()');
 }
+
+exports['compile number bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('43');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'number()');
+}
