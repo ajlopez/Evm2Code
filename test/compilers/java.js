@@ -398,3 +398,13 @@ exports['compile difficulty'] = function (test) {
 	test.equal(result[0], 'difficulty()');
 }
 
+exports['compile create bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('f0');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'create()');
+}
