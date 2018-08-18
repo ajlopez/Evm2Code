@@ -408,3 +408,14 @@ exports['compile create bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'create()');
 }
+
+exports['compile call bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('f1');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'call()');
+}
