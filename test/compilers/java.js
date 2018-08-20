@@ -419,3 +419,14 @@ exports['compile call bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'call()');
 }
+
+exports['compile callcode bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('f2');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'callcode()');
+}
