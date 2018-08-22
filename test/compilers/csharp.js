@@ -442,3 +442,13 @@ exports['compile return bytecode'] = function (test) {
 	test.equal(result[0], 'Return()');
 }
 
+exports['compile delegatecall bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('f4');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'DelegateCall()');
+}
