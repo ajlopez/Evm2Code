@@ -452,3 +452,14 @@ exports['compile delegatecall bytecode'] = function (test) {
 	test.equal(result.length, 1);
 	test.equal(result[0], 'DelegateCall()');
 }
+
+exports['compile suicide bytecode'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('ff');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'Suicide()');
+}
