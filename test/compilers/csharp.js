@@ -45,6 +45,29 @@ exports['compile dup bytecodes'] = function (test) {
 	}
 }
 
+exports['compile push bytecodes'] = function (test) {
+	var compiler = compilers.compiler();
+	
+	for (var k = 0; k < 32; k++) {
+        var code = (6 + (k >= 16 ? 1 : 0)).toString();
+        code += hexas[(k % 16)];
+        
+        for (var j = 0; j <= k; j++)
+            code += '0' + hexas[(j % 16)];
+        
+		var result = compiler.compile(code);
+
+		test.ok(result);
+		test.ok(Array.isArray(result));
+		test.equal(result.length, 1);
+        
+        if (k < 8)
+            test.equal(result[0], 'Push(0x' + code.substring(2) + ')');
+        else
+            test.equal(result[0], 'Push("' + code.substring(2) + '")');
+	}
+}
+
 exports['compile swap bytecodes'] = function (test) {
 	var compiler = compilers.compiler();
 	
