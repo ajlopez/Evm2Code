@@ -104,6 +104,27 @@ exports['compile arithmetic operations bytecodes'] = function (test) {
 	test.equal(result[10], 'SignExtend()');
 }
 
+exports['compile arithmetic operations bytecodes with upper case hexadigits'] = function (test) {
+	var compiler = compilers.compiler();
+
+	var result = compiler.compile('0102030405060708090A0B');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 11);
+	test.equal(result[0], 'Add()');
+	test.equal(result[1], 'Sub()');
+	test.equal(result[2], 'Mul()');
+	test.equal(result[3], 'Div()');
+	test.equal(result[4], 'Sdiv()');
+	test.equal(result[5], 'Mod()');
+	test.equal(result[6], 'SMod()');
+	test.equal(result[7], 'AddMod()');
+	test.equal(result[8], 'MulMod()');
+	test.equal(result[9], 'Exp()');
+	test.equal(result[10], 'SignExtend()');
+}
+
 exports['compile comparison operations bytecodes'] = function (test) {
 	var compiler = compilers.compiler();
 
