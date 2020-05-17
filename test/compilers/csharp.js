@@ -1,18 +1,18 @@
 
-var compilers = require('../../lib/compilers/csharp');
-var hexas = "0123456789abcdef";
+const compilers = require('../../lib/compilers/csharp');
+const hexas = "0123456789abcdef";
 
 exports['create compiler as object'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
 	test.ok(compiler);
 	test.equal(typeof compiler, 'object');
 }
 
 exports['compile stop bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
-	var result = compiler.compile('00');
+	const result = compiler.compile('00');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -22,9 +22,9 @@ exports['compile stop bytecode'] = function (test) {
 }
 
 exports['compile dup1 bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
-	var result = compiler.compile('80');
+	const result = compiler.compile('80');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -33,10 +33,10 @@ exports['compile dup1 bytecode'] = function (test) {
 }
 
 exports['compile dup bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
-	for (var k = 0; k < 16; k++) {
-		var result = compiler.compile('8' + hexas[k]);
+	for (let k = 0; k < 16; k++) {
+		const result = compiler.compile('8' + hexas[k]);
 		
 		test.ok(result);
 		test.ok(Array.isArray(result));
@@ -46,16 +46,16 @@ exports['compile dup bytecodes'] = function (test) {
 }
 
 exports['compile push bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
-	for (var k = 0; k < 32; k++) {
-        var code = (6 + (k >= 16 ? 1 : 0)).toString();
+	for (let k = 0; k < 32; k++) {
+        let code = (6 + (k >= 16 ? 1 : 0)).toString();
         code += hexas[(k % 16)];
         
-        for (var j = 0; j <= k; j++)
+        for (let j = 0; j <= k; j++)
             code += '0' + hexas[(j % 16)];
         
-		var result = compiler.compile(code);
+		const result = compiler.compile(code);
 
 		test.ok(result);
 		test.ok(Array.isArray(result));
@@ -69,10 +69,10 @@ exports['compile push bytecodes'] = function (test) {
 }
 
 exports['compile swap bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 	
-	for (var k = 0; k < 16; k++) {
-		var result = compiler.compile('9' + hexas[k]);
+	for (let k = 0; k < 16; k++) {
+		const result = compiler.compile('9' + hexas[k]);
 		
 		test.ok(result);
 		test.ok(Array.isArray(result));
@@ -82,9 +82,9 @@ exports['compile swap bytecodes'] = function (test) {
 }
 
 exports['compile memory bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('515253');
+	const result = compiler.compile('515253');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -95,9 +95,9 @@ exports['compile memory bytecodes'] = function (test) {
 }
 
 exports['compile storage bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('5455');
+	const result = compiler.compile('5455');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -107,9 +107,9 @@ exports['compile storage bytecodes'] = function (test) {
 }
 
 exports['compile arithmetic operations bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('0102030405060708090a0b');
+	const result = compiler.compile('0102030405060708090a0b');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -128,9 +128,9 @@ exports['compile arithmetic operations bytecodes'] = function (test) {
 }
 
 exports['compile arithmetic operations bytecodes with upper case hexadigits'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('0102030405060708090A0B');
+	const result = compiler.compile('0102030405060708090A0B');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -149,9 +149,9 @@ exports['compile arithmetic operations bytecodes with upper case hexadigits'] = 
 }
 
 exports['compile comparison operations bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('1011121314');
+	const result = compiler.compile('1011121314');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -164,9 +164,9 @@ exports['compile comparison operations bytecodes'] = function (test) {
 }
 
 exports['compile log bytecodes'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('a0a1a2a3a4');
+	const result = compiler.compile('a0a1a2a3a4');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -179,9 +179,9 @@ exports['compile log bytecodes'] = function (test) {
 }
 
 exports['compile gas bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('5a');
+	const result = compiler.compile('5a');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -190,9 +190,9 @@ exports['compile gas bytecode'] = function (test) {
 }
 
 exports['compile pc bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('58');
+	const result = compiler.compile('58');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -201,9 +201,9 @@ exports['compile pc bytecode'] = function (test) {
 }
 
 exports['compile msize bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('59');
+	const result = compiler.compile('59');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -212,9 +212,9 @@ exports['compile msize bytecode'] = function (test) {
 }
 
 exports['compile gaslimit bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('45');
+	const result = compiler.compile('45');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -223,9 +223,9 @@ exports['compile gaslimit bytecode'] = function (test) {
 }
 
 exports['compile address bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('30');
+	const result = compiler.compile('30');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -234,9 +234,9 @@ exports['compile address bytecode'] = function (test) {
 }
 
 exports['compile balance bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('31');
+	const result = compiler.compile('31');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -245,9 +245,9 @@ exports['compile balance bytecode'] = function (test) {
 }
 
 exports['compile origin bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('32');
+	const result = compiler.compile('32');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -256,9 +256,9 @@ exports['compile origin bytecode'] = function (test) {
 }
 
 exports['compile caller bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('33');
+	const result = compiler.compile('33');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -267,9 +267,9 @@ exports['compile caller bytecode'] = function (test) {
 }
 
 exports['compile callvalue bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('34');
+	const result = compiler.compile('34');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -278,9 +278,9 @@ exports['compile callvalue bytecode'] = function (test) {
 }
 
 exports['compile calldataload bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('35');
+	const result = compiler.compile('35');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -289,9 +289,9 @@ exports['compile calldataload bytecode'] = function (test) {
 }
 
 exports['compile calldatasize bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('36');
+	const result = compiler.compile('36');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -300,9 +300,9 @@ exports['compile calldatasize bytecode'] = function (test) {
 }
 
 exports['compile calldatacopy bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('37');
+	const result = compiler.compile('37');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -311,9 +311,9 @@ exports['compile calldatacopy bytecode'] = function (test) {
 }
 
 exports['compile codesize bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('38');
+	const result = compiler.compile('38');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -322,9 +322,9 @@ exports['compile codesize bytecode'] = function (test) {
 }
 
 exports['compile codecopy bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('39');
+	const result = compiler.compile('39');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -333,9 +333,9 @@ exports['compile codecopy bytecode'] = function (test) {
 }
 
 exports['compile gasprice bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('3a');
+	const result = compiler.compile('3a');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -344,9 +344,9 @@ exports['compile gasprice bytecode'] = function (test) {
 }
 
 exports['compile extcodesize bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('3b');
+	const result = compiler.compile('3b');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -355,9 +355,9 @@ exports['compile extcodesize bytecode'] = function (test) {
 }
 
 exports['compile extcodecopy bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('3c');
+	const result = compiler.compile('3c');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -366,9 +366,9 @@ exports['compile extcodecopy bytecode'] = function (test) {
 }
 
 exports['compile returndatasize bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('3d');
+	const result = compiler.compile('3d');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -377,9 +377,9 @@ exports['compile returndatasize bytecode'] = function (test) {
 }
 
 exports['compile returndatacopy bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('3e');
+	const result = compiler.compile('3e');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -388,9 +388,9 @@ exports['compile returndatacopy bytecode'] = function (test) {
 }
 
 exports['compile blockhash bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('40');
+	const result = compiler.compile('40');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -399,9 +399,9 @@ exports['compile blockhash bytecode'] = function (test) {
 }
 
 exports['compile coinbase bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('41');
+	const result = compiler.compile('41');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -410,9 +410,9 @@ exports['compile coinbase bytecode'] = function (test) {
 }
 
 exports['compile timestamp bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('42');
+	const result = compiler.compile('42');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -421,9 +421,9 @@ exports['compile timestamp bytecode'] = function (test) {
 }
 
 exports['compile number bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('43');
+	const result = compiler.compile('43');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -432,9 +432,9 @@ exports['compile number bytecode'] = function (test) {
 }
 
 exports['compile difficulty'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('44');
+	const result = compiler.compile('44');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -443,9 +443,9 @@ exports['compile difficulty'] = function (test) {
 }
 
 exports['compile create bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('f0');
+	const result = compiler.compile('f0');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -454,9 +454,9 @@ exports['compile create bytecode'] = function (test) {
 }
 
 exports['compile call bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('f1');
+	const result = compiler.compile('f1');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -465,9 +465,9 @@ exports['compile call bytecode'] = function (test) {
 }
 
 exports['compile callcode bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('f2');
+	const result = compiler.compile('f2');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -476,9 +476,9 @@ exports['compile callcode bytecode'] = function (test) {
 }
 
 exports['compile return bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('f3');
+	const result = compiler.compile('f3');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -487,9 +487,9 @@ exports['compile return bytecode'] = function (test) {
 }
 
 exports['compile delegatecall bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('f4');
+	const result = compiler.compile('f4');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -498,9 +498,9 @@ exports['compile delegatecall bytecode'] = function (test) {
 }
 
 exports['compile suicide bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('ff');
+	const result = compiler.compile('ff');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -509,9 +509,9 @@ exports['compile suicide bytecode'] = function (test) {
 }
 
 exports['compile pop bytecode'] = function (test) {
-	var compiler = compilers.compiler();
+	const compiler = compilers.compiler();
 
-	var result = compiler.compile('50');
+	const result = compiler.compile('50');
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
