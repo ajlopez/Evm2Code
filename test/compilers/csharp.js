@@ -354,6 +354,17 @@ exports['compile extcodesize bytecode'] = function (test) {
 	test.equal(result[0], 'ExtCodeSize()');
 }
 
+exports['compile extcodehash bytecode'] = function (test) {
+	const compiler = compilers.compiler();
+
+	const result = compiler.compile('3f');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'ExtCodeHash()');
+}
+
 exports['compile extcodecopy bytecode'] = function (test) {
 	const compiler = compilers.compiler();
 
