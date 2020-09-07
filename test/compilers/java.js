@@ -244,6 +244,17 @@ exports['compile balance bytecode'] = function (test) {
 	test.equal(result[0], 'balance()');
 }
 
+exports['compile selfbalance bytecode'] = function (test) {
+	const compiler = compilers.compiler();
+
+	const result = compiler.compile('47');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'selfbalance()');
+}
+
 exports['compile origin bytecode'] = function (test) {
 	const compiler = compilers.compiler();
 
