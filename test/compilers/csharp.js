@@ -244,6 +244,17 @@ exports['compile balance bytecode'] = function (test) {
 	test.equal(result[0], 'Balance()');
 }
 
+exports['compile chainid bytecode'] = function (test) {
+	const compiler = compilers.compiler();
+
+	const result = compiler.compile('46');
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 1);
+	test.equal(result[0], 'ChainId()');
+}
+
 exports['compile selfbalance bytecode'] = function (test) {
 	const compiler = compilers.compiler();
 
